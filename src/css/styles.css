@@ -1,0 +1,122 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(205, 205, 255);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(14, 14, 14);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: rgb(113, 113, 179);
+}
+
+input {
+  padding-left: 7px;
+  height: 30px;
+  width: 350px;
+  border-radius: 4px;
+  border-color: rgb(182, 182, 182);
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+button {
+  height: 36px;
+  width: 100px;
+  border-radius: 4px;
+  border-color: rgb(182, 182, 182);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.load-more {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.gallery {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center; 
+}
+
+.link {
+  width: 20%;
+}
+
+.gallery .photo-card {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.gallery .photo-card:hover .imgBox {
+  transform: scale(1.1);
+} 
+
+.gallery .photo-card:hover .info {
+  background-color: rgb(134, 134, 219);
+  color: mistyrose;
+}
+
+.imgBox img {
+  width: 100%;
+  height: 13rem;
+  /* height: 50%; */
+  object-fit: cover;
+  resize: both;
+}
+
+.info {
+  position: absolute;
+  top: 82%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 5px;
+
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.5s ease-in-out;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}

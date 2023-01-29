@@ -1,24 +1,32 @@
-// const axios = require('axios').default;
-import axios from "axios";
+import axios from 'axios';
 
-const BASE_URL = 'https://pixabay.com';
-const API_KEY = '33057565-d3f4ca79a5c4be950c2fc9706';
+export class PixabayAPI {
+  static BASE_URL = 'https://pixabay.com/api/';
+  static API_KEY = '33034964-6791c4166c041f83734802d57';
 
-export async function fetchPictures (query, page) {
+  constructor() {
+    this.page = 1, 
+    this.query = null,
+    this.totalHits = null;
+  }
+
+  async getPhotos() {
     const searchParams = new URLSearchParams({
-        key: API_KEY,
-        q: this.query,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
-        page: this.page,
-        per_page: 40,
+      q: this.query,
+      page: this.page,
+      per_page: 40,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
+      key: PixabayAPI.API_KEY,
     });
 
-    try {
-      const response = await axios.get(`${BASE_URL}/api/?${searchParams}`);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  } 
+    const response = await axios.get(
+      `${PixabayAPI.BASE_URL}?${searchParams}`
+    );
+    console.log(response);
+    this.totalHits = response.data.totalHits;
+    // // console.log(this.totalHits);
+    return response.data.hits;
+  }
+}
