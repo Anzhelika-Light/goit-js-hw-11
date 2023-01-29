@@ -46,6 +46,13 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  transform: scale(1.1); 
+  background-color: rgb(209, 209, 242);
+  color: rgb(58, 4, 87);
+  font-size: 16px;
+}
+
 .load-more {
   margin-top: 10px;
   display: block;
@@ -83,6 +90,7 @@ button {
 
 .gallery .photo-card:hover .imgBox {
   transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
 } 
 
 .gallery .photo-card:hover .info {
