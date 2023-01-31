@@ -35,8 +35,17 @@ async function onSubmitForm(e) {
   pixabayAPI.query = e.target.elements.searchQuery.value.trim();
   pixabayAPI.page = 1;
 
+  const query = e.target.elements.searchQuery.value;
+
+  if (query.replace(/\s+/g, ' ').trim() === '') {
+    Notiflix.Notify.failure('The query must consist of words!');
+    e.target.reset();
+    galleryListEl.innerHTML = '';
+    return;
+  }
+
   try {
-    const data = await pixabayAPI.getPhotos();
+    const data = await pixabayAPI.fetchPictures();
     console.log(data);
     if (data.length === 0) {
       Notiflix.Notify.failure(
@@ -48,7 +57,6 @@ async function onSubmitForm(e) {
 
       return;
     }
-
     galleryListEl.innerHTML = createGalleryCards(data);
     gallery.refresh();
 
@@ -70,7 +78,7 @@ async function onSubmitForm(e) {
 async function onSubmitLoadMore(e) {
   pixabayAPI.page += 1;
 
-  const data = await pixabayAPI.getPhotos();
+  const data = await pixabayAPI.fetchPictures();
 
   try {
     galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(data));

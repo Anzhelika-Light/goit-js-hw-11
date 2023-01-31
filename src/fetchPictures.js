@@ -10,7 +10,7 @@ export class PixabayAPI {
     this.totalHits = null;
   }
 
-  async getPhotos() {
+  async fetchPictures() {
     const searchParams = new URLSearchParams({
       q: this.query,
       page: this.page,
@@ -26,7 +26,7 @@ export class PixabayAPI {
     );
     console.log(response);
     this.totalHits = response.data.totalHits;
-    // // console.log(this.totalHits);
+
     return response.data.hits;
   }
 }
